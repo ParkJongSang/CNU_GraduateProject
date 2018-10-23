@@ -119,11 +119,12 @@ public class MessageActivity extends Activity {
         });
     }
 
-    class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+    class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         List<ChatModel.Comment> comments;
         UserModel userModel;
-        public RecyclerViewAdaptor(){
+
+        public RecyclerViewAdaptor() {
             comments = new ArrayList<>();
 
             FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -141,13 +142,13 @@ public class MessageActivity extends Activity {
 
         }
 
-        void getMessageList(){
+        void getMessageList() {
             FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("comments").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     comments.clear();
 
-                    for(DataSnapshot item : dataSnapshot.getChildren()){
+                    for (DataSnapshot item : dataSnapshot.getChildren()) {
                         comments.add(item.getValue(ChatModel.Comment.class));
                     }
                     //메세지가 갱신
@@ -172,17 +173,17 @@ public class MessageActivity extends Activity {
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-            MessageViewHolder messageViewHolder = ((MessageViewHolder)viewHolder);
+            MessageViewHolder messageViewHolder = ((MessageViewHolder) viewHolder);
 
             //내가보낸 메시지
-            if(comments.get(position).uid.equals(uid)){
+            if (comments.get(position).uid.equals(uid)) {
                 messageViewHolder.textView_message.setText(comments.get(position).message);
                 messageViewHolder.textView_message.setBackgroundResource(R.drawable.rightbubble);
                 messageViewHolder.linearLayout_destination.setVisibility(View.INVISIBLE);
                 messageViewHolder.textView_message.setTextSize(25);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
-            //상대방이 보낸거
-            }else{
+                //상대방이 보낸거
+            } else {
                 Glide.with(viewHolder.itemView.getContext())
                         .load(userModel.profileImageUrl)
                         .apply(new RequestOptions().circleCrop())
@@ -226,5 +227,11 @@ public class MessageActivity extends Activity {
                 textview_timestamp = (TextView) view.findViewById(R.id.messageitem_textview_timestamp);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();;
+        overridePendingTransition(R.anim.fromleft, R.anim.toright);
     }
 }
