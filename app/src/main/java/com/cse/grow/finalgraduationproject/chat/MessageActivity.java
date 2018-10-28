@@ -1,6 +1,9 @@
 package com.cse.grow.finalgraduationproject.chat;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +20,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.cse.grow.finalgraduationproject.Gpsinfo;
 import com.cse.grow.finalgraduationproject.R;
 import com.cse.grow.finalgraduationproject.model.ChatModel;
 import com.cse.grow.finalgraduationproject.model.UserModel;
@@ -46,9 +50,21 @@ public class MessageActivity extends Activity {
     private String uid;
     private String chatRoomUid;
 
+    private Button location;
+
     private RecyclerView recyclerView;
 
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+
+
+    private final int PERMISSIONS_ACCESS_FINE_LOCATION = 1000;
+    private final int PERMISSIONS_ACCESS_COARSE_LOCATION = 1001;
+    private boolean isAccessFineLocation = false;
+    private boolean isAccessCoarseLocation = false;
+    private boolean isPermission = false;
+
+    // GPSTracker class
+    private Gpsinfo gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +76,41 @@ public class MessageActivity extends Activity {
         button = (Button) findViewById(R.id.messageactivity_button);
         editText = (EditText) findViewById(R.id.messageactivity_editText);
         recyclerView = (RecyclerView) findViewById(R.id.messageactivity_recyclerview);
+        location = (Button) findViewById(R.id.messageactivity_location);
 
+
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isPermission){
+                    callPermission();
+                    return;
+                }
+
+                gps = new Gpsinfo(MessageActivity.this);
+
+                if(gps.isGetLocation()){
+                    double latitude = gps.getLatitude();
+                    double longitude = gps.getLongitude();
+                    String sendText = "위도 : " + latitude + "\n경도 : " + longitude;
+
+                    ChatModel.Comment comment = new ChatModel.Comment();
+                    comment.uid = uid;
+                    comment.message = sendText;
+                    comment.timeStamp = ServerValue.TIMESTAMP;
+
+                    FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("comments").push().setValue(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            editText.setText("");
+                        }
+                    });
+
+                }else{
+                    gps.showSettingsAlert();
+                }
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -234,4 +284,47 @@ public class MessageActivity extends Activity {
         finish();;
         overridePendingTransition(R.anim.fromleft, R.anim.toright);
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
+        if (requestCode == PERMISSIONS_ACCESS_FINE_LOCATION
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            isAccessFineLocation = true;
+
+        } else if (requestCode == PERMISSIONS_ACCESS_COARSE_LOCATION
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+            isAccessCoarseLocation = true;
+        }
+
+        if (isAccessFineLocation && isAccessCoarseLocation) {
+            isPermission = true;
+        }
+    }
+
+    // 전화번호 권한 요청
+    private void callPermission() {
+        // Check the SDK version and whether the permission is already granted or not.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            requestPermissions(
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSIONS_ACCESS_FINE_LOCATION);
+
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
+
+            requestPermissions(
+                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                    PERMISSIONS_ACCESS_COARSE_LOCATION);
+        } else {
+            isPermission = true;
+        }
+    }
+
 }

@@ -21,7 +21,7 @@
     <EditText
         android:layout_toLeftOf="@+id/messageactivity_button"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_toRightOf="@+id/messageactivity_location"
         android:id="@+id/messageactivity_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -33,4 +33,10 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="전송"/>
+    <Button
+        android:id="@+id/messageactivity_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="어딨어?"/>
 </RelativeLayout>
