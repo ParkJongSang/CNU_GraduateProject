@@ -8,6 +8,13 @@ import android.view.MenuItem;
 
 import com.cse.grow.finalgraduationproject.fragment.ChatFragment;
 import com.cse.grow.finalgraduationproject.fragment.PeopleFragment;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +38,16 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        passPushTokenToServer();
 
-        getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new PeopleFragment()).commit();
+    }
+
+    void passPushTokenToServer(){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Map<String, Object> map = new HashMap<>();
+        map.put("pushToken",token);
+
+        FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(map);
     }
 }

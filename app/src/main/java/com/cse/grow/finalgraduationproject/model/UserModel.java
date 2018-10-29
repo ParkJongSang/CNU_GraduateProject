@@ -5,4 +5,5 @@ public class UserModel {
     public String userPhone;
     public String userUid;
     public String profileImageUrl;
+    public String pushToken;
 }
