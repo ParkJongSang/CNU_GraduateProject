@@ -3,6 +3,8 @@ package com.cse.grow.finalgraduationproject.chat;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -74,9 +76,13 @@ public class MessageActivity extends Activity {
 
     private final int PERMISSIONS_ACCESS_FINE_LOCATION = 1000;
     private final int PERMISSIONS_ACCESS_COARSE_LOCATION = 1001;
+    private final Geocoder geocoder = new Geocoder(this);
+
     private boolean isAccessFineLocation = false;
     private boolean isAccessCoarseLocation = false;
     private boolean isPermission = false;
+
+
 
     // GPSTracker class
     private Gpsinfo gps;
@@ -92,7 +98,7 @@ public class MessageActivity extends Activity {
         editText = (EditText) findViewById(R.id.messageactivity_editText);
         recyclerView = (RecyclerView) findViewById(R.id.messageactivity_recyclerview);
         location = (Button) findViewById(R.id.messageactivity_location);
-
+        final List<Address>[] list = new List[]{null};
 
         location.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,9 +111,23 @@ public class MessageActivity extends Activity {
                 gps = new Gpsinfo(MessageActivity.this);
 
                 if(gps.isGetLocation()){
+
                     double latitude = gps.getLatitude();
                     double longitude = gps.getLongitude();
-                    String sendText = "위도 : " + latitude + "\n경도 : " + longitude;
+
+                    try {
+                        list[0] = geocoder.getFromLocation(latitude, longitude, 10);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    String sendText;
+                    if(list!=null) {
+                        String[] strings = list[0].toString().split("\"");
+                        sendText = "위도 : " + latitude + "\n경도 : " + longitude +"\n" + strings[1]+"\n";
+                    }else{
+                        sendText = "위도 : " + latitude + "\n경도 : " + longitude +"\n주소가 검색되지 않습니다";
+                    }
+
 
                     ChatModel.Comment comment = new ChatModel.Comment();
                     comment.uid = uid;

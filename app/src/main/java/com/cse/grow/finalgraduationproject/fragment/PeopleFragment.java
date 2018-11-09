@@ -4,6 +4,7 @@ import android.app.ActivityOptions;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Message;
+import android.os.TestLooperManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -88,18 +89,23 @@ public class PeopleFragment extends Fragment {
                     .apply(new RequestOptions().circleCrop()).into(((CustomViewHolder)viewHolder).imageView);
 
             ((CustomViewHolder)viewHolder).textView.setText(userModels.get(i).userName);
+
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), MessageActivity.class);
-
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), MessageActivity.class);
                     intent.putExtra("destinationUid", userModels.get(i).userUid);
-
-                    ActivityOptions activityOptions = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.fromright, R.anim.toleft);
+                    ActivityOptions activityOptions = ActivityOptions.makeCustomAnimation(v.getContext(), R.anim.fromright, R.anim.toleft);
                     startActivity(intent, activityOptions.toBundle());
                 }
             });
+
+            if(userModels.get(i).comment != null){
+                ((CustomViewHolder) viewHolder).textView_commnet.setText(userModels.get(i).comment);
+            }
         }
+
+
 
         @Override
         public int getItemCount() {
@@ -109,11 +115,13 @@ public class PeopleFragment extends Fragment {
         private class CustomViewHolder extends RecyclerView.ViewHolder {
             public ImageView imageView;
             public TextView textView;
+            public TextView textView_commnet;
 
             public CustomViewHolder(View view) {
                 super(view);
                 imageView = (ImageView) view.findViewById(R.id.frienditem_imageview);
                 textView = (TextView) view.findViewById(R.id.frienditem_textview);
+                textView_commnet = (TextView) view.findViewById(R.id.frienditem_textview_comment);
             }
         }
     }
