@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.EditText;
 
 import com.cse.grow.finalgraduationproject.R;
@@ -56,6 +58,7 @@ public class AccountFragment extends Fragment {
 
 
         final EditText editText = view.findViewById(R.id.commentDialog_edittext);
+
         builder.setView(view).setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
