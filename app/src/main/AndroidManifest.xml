@@ -31,7 +31,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".fragment.AccountFragment"></activity>
+        <activity android:name=".fragment.AccountFragment" />
+        <activity android:name=".TimetableActivity"></activity>
     </application>
 
 </manifest>

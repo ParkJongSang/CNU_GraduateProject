@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TimetableActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/timetableActivity_textView"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="시간표"
+            android:textSize="30dp"
+            android:textAlignment="center"/>
+        <Button
+            android:id="@+id/timetableActivity_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:textColor="#ffffff"
+            android:text="+"
+            android:textSize="30dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="월"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="화"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="수"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="목"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="금"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/design_default_color_primary_dark"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="9"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_9"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tuesday_9"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/wendsday_9"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_9"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/friday_9"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="10"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_10"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tuesday_10"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/wendsday_10"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_10"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/friday_10"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="11"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_11"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tuesday_11"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/wendsday_11"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_11"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/friday_11"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="12"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_12"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tuesday_12"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/wendsday_12"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_12"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/friday_12"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="13"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_13"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tuesday_13"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/wendsday_13"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_13"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/friday_13"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="14"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_14"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tuesday_14"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/wendsday_14"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_14"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/friday_14"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="15"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_15"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tuesday_15"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/wendsday_15"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_15"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/friday_15"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="16"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_16"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tuesday_16"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/wendsday_16"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_16"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/friday_16"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="17"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_17"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tuesday_17"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:text=""
+            android:textAlignment="center" />
+        <TextView
+            android:id="@+id/wendsday_17"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_17"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/friday_17"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:text=""
+            android:textAlignment="center" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="18"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_18"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tuesday_18"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/wendsday_18"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_18"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/friday_18"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="19"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_19"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tuesday_19"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/wendsday_19"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_19"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/friday_19"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="20"
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/monday_20"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tuesday_20"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/wendsday_20"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/thursday_20"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/friday_20"
+            android:text=""
+            android:layout_width="65dp"
+            android:textAlignment="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+</LinearLayout>

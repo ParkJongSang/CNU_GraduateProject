@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.cse.grow.finalgraduationproject.R;
+import com.cse.grow.finalgraduationproject.TimetableActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,12 +27,21 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @org.jetbrains.annotations.Nullable @Nullable ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_account, container, false);
-        Button buuton = (Button) view.findViewById(R.id.accountFragment_button_comment);
+        Button button_dialog = (Button) view.findViewById(R.id.accountFragment_button_comment);
+        Button button_timetable = (Button) view.findViewById(R.id.accountFragment_button_timetable);
 
-        buuton.setOnClickListener(new View.OnClickListener() {
+        button_dialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialog(view.getContext());
+            }
+        });
+
+        button_timetable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), TimetableActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -62,4 +73,6 @@ public class AccountFragment extends Fragment {
 
         builder.show();
     }
+
+
 }
