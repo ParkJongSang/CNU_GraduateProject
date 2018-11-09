@@ -104,6 +104,11 @@ public class SingupActivity extends AppCompatActivity {
                                         userModel.userPhone = phone.getText().toString();
                                         userModel.userUid = FirebaseAuth.getInstance().getUid();
                                         userModel.profileImageUrl = imageUrl;
+                                        userModel.monday = "9,10,11";
+                                        userModel.tuesday = "9,10,11";
+                                        userModel.wendsday = "9,10,11";
+                                        userModel.thursday = "9,10,11";
+                                        userModel.friday = "9,10,11";
 
                                         FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
