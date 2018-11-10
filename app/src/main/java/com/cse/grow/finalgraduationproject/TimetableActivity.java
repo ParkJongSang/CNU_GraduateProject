@@ -385,7 +385,5 @@ public class TimetableActivity extends AppCompatActivity {
                 friday[i].setBackgroundColor(Color.rgb(255,255,255));
             }
         }
-
-
     }
 }
