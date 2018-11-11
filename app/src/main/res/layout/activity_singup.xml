@@ -51,7 +51,7 @@
         android:layout_height="wrap_content">
         <EditText
             android:id="@+id/signupactivity_edittext_phone"
-            android:hint="전화번호"
+            android:hint="학교이름 ex)충남대학교"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

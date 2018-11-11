@@ -18,6 +18,7 @@
             android:text="아이디"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
+            android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -26,10 +27,23 @@
             android:layout_height="match_parent"
             android:gravity="center|right">
             <TextView
+                android:id="@+id/frienditem_textview_school"
+                android:layout_marginRight="20dp"
+                android:text="학교 이름"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/frienditem_textview_position"
+                android:layout_marginRight="20dp"
+                android:text="상대적 위치"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
                 android:id="@+id/frienditem_textview_comment"
                 android:text="상태메세지"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

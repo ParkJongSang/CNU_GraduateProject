@@ -100,8 +100,14 @@ public class PeopleFragment extends Fragment {
                 }
             });
 
-            if(userModels.get(i).comment != null){
-                ((CustomViewHolder) viewHolder).textView_commnet.setText(userModels.get(i).comment);
+            if(userModels.get(i).comment_state != null){
+                ((CustomViewHolder) viewHolder).textView_commnet.setText(userModels.get(i).comment_state);
+            }
+            if(userModels.get(i).comment_position != null){
+                ((CustomViewHolder) viewHolder).textView_position.setText(userModels.get(i).comment_position);
+            }
+            if(userModels.get(i).userSchool != null){
+                ((CustomViewHolder) viewHolder).textView_school.setText(userModels.get(i).userSchool);
             }
         }
 
@@ -116,12 +122,16 @@ public class PeopleFragment extends Fragment {
             public ImageView imageView;
             public TextView textView;
             public TextView textView_commnet;
+            public TextView textView_position;
+            public TextView textView_school;
 
             public CustomViewHolder(View view) {
                 super(view);
                 imageView = (ImageView) view.findViewById(R.id.frienditem_imageview);
                 textView = (TextView) view.findViewById(R.id.frienditem_textview);
                 textView_commnet = (TextView) view.findViewById(R.id.frienditem_textview_comment);
+                textView_position = (TextView) view.findViewById(R.id.frienditem_textview_position);
+                textView_school = (TextView) view.findViewById(R.id.frienditem_textview_school);
             }
         }
     }

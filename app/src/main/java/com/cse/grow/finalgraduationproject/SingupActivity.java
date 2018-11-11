@@ -3,8 +3,6 @@ package com.cse.grow.finalgraduationproject;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.UserHandle;
-import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,7 +31,7 @@ public class SingupActivity extends AppCompatActivity {
     private EditText email;
     private EditText name;
     private EditText password;
-    private EditText phone;
+    private EditText school;
     private Button signup;
     private ImageView profile;
     private Uri imageUri;
@@ -65,7 +63,7 @@ public class SingupActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.signupactivity_edittext_email);
         name = (EditText) findViewById(R.id.signupactivity_edittext_name);
         password = (EditText) findViewById(R.id.signupactivity_edittext_password);
-        phone = (EditText) findViewById(R.id.signupactivity_edittext_phone);
+        school = (EditText) findViewById(R.id.signupactivity_edittext_phone);
         signup = (Button) findViewById(R.id.signupactivity_button_signup);
 
         signup.setBackgroundColor(Color.parseColor(splash_background));
@@ -77,7 +75,7 @@ public class SingupActivity extends AppCompatActivity {
                 if(email.getText().toString() == null
                         || name.getText().toString() == null
                         || password.getText().toString() == null
-                        || phone.getText().toString() == null
+                        || school.getText().toString() == null
                         || imageUri == null){
                     return;
                 }
@@ -101,15 +99,16 @@ public class SingupActivity extends AppCompatActivity {
 
                                         UserModel userModel = new UserModel();
                                         userModel.userName = name.getText().toString();
-                                        userModel.userPhone = phone.getText().toString();
+                                        userModel.userSchool = school.getText().toString();
                                         userModel.userUid = FirebaseAuth.getInstance().getUid();
                                         userModel.profileImageUrl = imageUrl;
-                                        userModel.monday = "9,10,11";
-                                        userModel.tuesday = "9,10,11";
-                                        userModel.wendsday = "9,10,11";
-                                        userModel.thursday = "9,10,11";
-                                        userModel.friday = "9,10,11";
-
+                                        userModel.monday = "";
+                                        userModel.tuesday = "";
+                                        userModel.wendsday = "";
+                                        userModel.thursday = "";
+                                        userModel.friday = "";
+                                        userModel.currentPositon = "";
+                                        userModel.comment_position = "";
                                         FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
@@ -121,7 +120,6 @@ public class SingupActivity extends AppCompatActivity {
 
                             }
                         });
-
             }
         });
     }

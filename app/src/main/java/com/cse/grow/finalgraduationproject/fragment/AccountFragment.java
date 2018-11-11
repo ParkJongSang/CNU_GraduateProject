@@ -64,7 +64,7 @@ public class AccountFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 Map<String, Object> stringObjectMap = new HashMap<>();
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                stringObjectMap.put("comment", editText.getText().toString());
+                stringObjectMap.put("comment_state", editText.getText().toString());
                 FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(stringObjectMap);
             }
         }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
