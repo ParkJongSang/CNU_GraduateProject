@@ -284,25 +284,27 @@ public class TimetableActivity extends AppCompatActivity {
 
 
         for(int i = 0; i < userModels.size(); i++){
-            if(userModels.get(i).monday != null){
-                str_monday = userModels.get(i).monday.split(",");
-                times_monday = new int[str_monday.length];
-            }
-            if(userModels.get(i).tuesday!= null){
-                str_tuesday = userModels.get(i).tuesday.split(",");
-                times_tuesday = new int[str_tuesday.length];
-            }
-            if(userModels.get(i).wendsday != null){
-                str_wednsday = userModels.get(i).wendsday.split(",");
-                times_wednsday = new int[str_wednsday.length];
-            }
-            if(userModels.get(i).thursday != null){
-                str_thursday = userModels.get(i).thursday.split(",");
-                times_thursday = new int[str_thursday.length];
-            }
-            if(userModels.get(i).friday != null){
-                str_friday = userModels.get(i).friday.split(",");
-                times_friday = new int[str_friday.length];
+            if(currentUid.equals(userModels.get(i).userUid)){
+                if(userModels.get(i).monday != null){
+                    str_monday = userModels.get(i).monday.split(",");
+                    times_monday = new int[str_monday.length];
+                }
+                if(userModels.get(i).tuesday!= null){
+                    str_tuesday = userModels.get(i).tuesday.split(",");
+                    times_tuesday = new int[str_tuesday.length];
+                }
+                if(userModels.get(i).wendsday != null){
+                    str_wednsday = userModels.get(i).wendsday.split(",");
+                    times_wednsday = new int[str_wednsday.length];
+                }
+                if(userModels.get(i).thursday != null){
+                    str_thursday = userModels.get(i).thursday.split(",");
+                    times_thursday = new int[str_thursday.length];
+                }
+                if(userModels.get(i).friday != null){
+                    str_friday = userModels.get(i).friday.split(",");
+                    times_friday = new int[str_friday.length];
+                }
             }
         }
 

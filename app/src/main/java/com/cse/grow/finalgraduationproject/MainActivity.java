@@ -1,10 +1,14 @@
 package com.cse.grow.finalgraduationproject;
 
 import android.Manifest;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
+import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.test.espresso.remote.EspressoRemoteMessage;
@@ -41,6 +45,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.SimpleTimeZone;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 public class MainActivity extends AppCompatActivity {
 
     private List<UserModel> userModelList = new ArrayList<>();
@@ -56,12 +62,14 @@ public class MainActivity extends AppCompatActivity {
     private Gpsinfo gps;
     private GoogleMap googleMap;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.mainactivity_bottonnavigationview);
+
+        //Intent intent = new Intent(this, MyService.class);
+        //startService(intent);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -229,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
             //sendText = "위도 : " + latitude + "\n경도 : " + longitude + "\n주소가 검색되지 않습니다";
         }
 
-        Toast.makeText(this, address, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, address, LENGTH_SHORT).show();
         Map<String, Object> map = new HashMap<>();
         map.put("currentPositon", address);
 
@@ -278,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
             if(currentDay.equals("monday")){
                 isLecture(uid, "monday", currentHour);
             }else if(currentDay.equals("tuesday")){
-                Toast.makeText(this, "is Tuesday?", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "is Tuesday?", LENGTH_SHORT).show();
                 isLecture(uid, "tuesday", currentHour);
             }else if(currentDay.equals("wendsday")){
                 isLecture(uid, "wendsday", currentHour);

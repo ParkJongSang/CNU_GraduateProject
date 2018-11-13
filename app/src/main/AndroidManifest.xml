@@ -32,7 +32,12 @@
         </service>
 
         <activity android:name=".fragment.AccountFragment" />
-        <activity android:name=".TimetableActivity"></activity>
+        <activity android:name=".TimetableActivity" />
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
