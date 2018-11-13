@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(this,currentDay,Toast.LENGTH_SHORT).show();
 
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH");
         Date date = new Date(System.currentTimeMillis());
 
         String currentHour = simpleDateFormat.format(date).toString();
@@ -278,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
             if(currentDay.equals("monday")){
                 isLecture(uid, "monday", currentHour);
             }else if(currentDay.equals("tuesday")){
+                Toast.makeText(this, "is Tuesday?", Toast.LENGTH_SHORT).show();
                 isLecture(uid, "tuesday", currentHour);
             }else if(currentDay.equals("wendsday")){
                 isLecture(uid, "wendsday", currentHour);
@@ -294,7 +295,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void isLecture(String uid, String day, String Hour){
-        String[] hours = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child(day).toString().split(",");
+
+        String[] hours = null;//FirebaseDatabase.getInstance().getReference().child("users").child(uid).child(day);
+
+        FirebaseDatabase.getInstance().getReference().child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userModelList.clear();
+                for(DataSnapshot item : dataSnapshot.getChildren()){
+                    userModelList.add(item.getValue(UserModel.class));
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        for(int i = 0; i < userModelList.size(); i++){
+            if(day.equals("monday")){
+                hours = userModelList.get(i).monday.toString().split(",");
+            }else if(day.equals("tuesday")){
+                hours = userModelList.get(i).tuesday.toString().split(",");
+            }else if(day.equals("wendsday")){
+                hours = userModelList.get(i).wendsday.toString().split(",");
+            }else if(day.equals("thursday")){
+                hours = userModelList.get(i).thursday.toString().split(",");
+            }else if(day.equals("friday")){
+                hours = userModelList.get(i).friday.toString().split(",");
+            }
+        }
+
         int[] real_hours = new int[hours.length];
         int currentHour = Integer.parseInt(Hour);
         boolean isLec = false;
