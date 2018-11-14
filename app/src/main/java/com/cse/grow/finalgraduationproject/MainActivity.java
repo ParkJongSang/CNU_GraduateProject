@@ -86,23 +86,9 @@ public class MainActivity extends AppCompatActivity {
                         getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new PeopleFragment()).commit();
                         return true;
                     case R.id.action_chat:
-                        try {
-                            updateComment();
-                            searchCurrentPosition();
-                            printCurrentPosition();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
                         getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new ChatFragment()).commit();
                         return true;
                     case R.id.action_account:
-                        try {
-                            updateComment();
-                            searchCurrentPosition();
-                            printCurrentPosition();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
                         getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new AccountFragment()).commit();
                         return true;
                 }
@@ -179,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
                     //Map<String, Object> map = new HashMap<>();
                     map.put("comment_position", "학교 외부");
                 }
+                //Toast.makeText(this, currentAddress, Toast.LENGTH_SHORT).show();
 
                 FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(map);
                 //sendText = "위도 : " + latitude + "\n경도 : " + longitude + "\n" + strings[1] + "\n";
@@ -237,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
             //sendText = "위도 : " + latitude + "\n경도 : " + longitude + "\n주소가 검색되지 않습니다";
         }
 
-        Toast.makeText(this, address, LENGTH_SHORT).show();
+        //Toast.makeText(this, address, LENGTH_SHORT).show();
         Map<String, Object> map = new HashMap<>();
         map.put("currentPositon", address);
 
