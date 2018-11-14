@@ -174,7 +174,4 @@ public class ChatFragment extends android.app.Fragment{
             }
         }
     }
-
-
-
 }
